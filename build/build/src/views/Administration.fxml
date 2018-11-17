@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane fx:id="main" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <top>
+      <BorderPane prefHeight="31.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <top>
+            <MenuBar prefHeight="29.0" prefWidth="625.0" BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="Fichier">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Ouvrir" />
+                        <MenuItem fx:id="close" mnemonicParsing="false" text="Quitter" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Outils">
+                     <items>
+                        <Menu mnemonicParsing="false" text="Gérer les sous-administrateurs">
+                           <items>
+                              <MenuItem fx:id="listGestionnaire" mnemonicParsing="false" text="Liste des gestionnaires" />
+                              <MenuItem fx:id="addGestionnaire" mnemonicParsing="false" text="Ajouter un gestionnaire" />
+                           </items>
+                        </Menu>
+                        <MenuItem fx:id="configServeur" mnemonicParsing="false" text="Configurer le serveur" />
+                        <MenuItem fx:id="myprofile" mnemonicParsing="false" text="Modifier mon profile" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Fenetre">
+                     <items>
+                        <MenuItem fx:id="maximize" mnemonicParsing="false" text="Agrandir" />
+                        <MenuItem fx:id="minimize" mnemonicParsing="false" text="Minimizer" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <Menu mnemonicParsing="false" text="Personaliser">
+                          <items>
+                            <MenuItem fx:id="fullscreenSize" mnemonicParsing="false" text="100%" />
+                              <MenuItem fx:id="mediumSize" mnemonicParsing="false" text="75%" />
+                              <MenuItem fx:id="smallSize" mnemonicParsing="false" text="50%" />
+                          </items>
+                        </Menu>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Notifications">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Liste des alertes" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Configurer " />
+                     </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="Aide">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="A propos" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Licence 1.0" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+      </BorderPane>
+   </top>
+   <bottom>
+      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <items>
+            <Label fx:id="time" text="23:06" />
+            <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="5.0" />
+            <Label fx:id="date" layoutX="10.0" layoutY="17.0" text="27-03-2016" />
+         </items>
+      </ToolBar>
+   </bottom>
+   <center>
+      <BorderPane fx:id="mngmnt" disable="true" prefHeight="447.0" prefWidth="489.0" BorderPane.alignment="CENTER">
+         <bottom>
+            <TitledPane collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="220.0" prefWidth="548.0" text="Console" BorderPane.alignment="CENTER">
+               <content>
+                  <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <WebView fx:id="cmdResult" prefHeight="343.0" prefWidth="378.0" BorderPane.alignment="CENTER" />
+                     </center>
+                     <top>
+                        <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="599.0" minWidth="10.0" prefWidth="596.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="613.0" minWidth="10.0" prefWidth="131.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField fx:id="cmdLine" promptText="Saisir votre commande ici ..." />
+                              <Button fx:id="execCmd" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Exécuter" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                     </top>
+                  </BorderPane>
+               </content>
+            </TitledPane>
+         </bottom>
+         <center>
+            <TitledPane collapsible="false" maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" text="Panneau d'administration" BorderPane.alignment="CENTER">
+               <content>
+                  <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <GridPane BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                 <center>
+                                    <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Button fx:id="ramInformation" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="61.0" prefWidth="145.0" text="Mémoire RAM">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../res/memory.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="cpu" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="61.0" prefWidth="145.0" text="Processeur" GridPane.rowIndex="1">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../res/cpu.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="tasks" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="61.0" prefWidth="145.0" text="Liste des tâches" GridPane.rowIndex="2">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../res/taskmgr_icon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="interfaces" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="61.0" prefWidth="145.0" text="Informations réseaux" GridPane.columnIndex="1">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../res/network_card.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="msg" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="61.0" prefWidth="145.0" text="Envoyer un message" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../res/unnamed.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="storage" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="61.0" prefWidth="145.0" text="Stockage" GridPane.rowIndex="4">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../res/harddrive.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="connectivity" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="61.0" prefWidth="145.0" text="Analyse des connexions " GridPane.rowIndex="3">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../res/port.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="shuttdown" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="61.0" prefWidth="145.0" text="Arrêter la machine" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../res/shutdown.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="restart" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="61.0" prefWidth="145.0" text="Redémarrer la machine" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../res/quick_restart.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="screenshot" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="61.0" prefWidth="145.0" text="Capture d'écran" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../res/screencapturelogo.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </GridPane>
+                                 </center></BorderPane>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="288.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="156.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.0" minWidth="10.0" prefWidth="133.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints maxHeight="67.99999237060547" minHeight="10.0" prefHeight="62.666664123535156" valignment="CENTER" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="Systeme d'exploitation" GridPane.rowIndex="1" />
+                                          <Label text="Version" GridPane.rowIndex="2" />
+                                          <Label text="Nom d'utilisateur" GridPane.rowIndex="3" />
+                                          <Label text="Pays" GridPane.rowIndex="4" />
+                                          <Label text="Langage " GridPane.rowIndex="5" />
+                                          <Label fx:id="o1" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label fx:id="o2" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label fx:id="o3" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label fx:id="o4" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <Label fx:id="o5" text="-" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                          <Label text="Resolution d'écran" GridPane.rowIndex="6" />
+                                          <Label text="Dossier personnel" GridPane.rowIndex="7" />
+                                          <Label text="Emplacement JVM" GridPane.rowIndex="8" />
+                                          <Label text="Constructeur Java" GridPane.rowIndex="9" />
+                                          <Label text="URL vendor Java" GridPane.rowIndex="10" />
+                                          <Label fx:id="o6" text="-" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                          <Label fx:id="o7" text="-" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                          <Label fx:id="o8" text="-" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                          <Label fx:id="o9" text="-" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                          <Label fx:id="o10" text="-" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                          <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0">
+                                             <center>
+                                                <ImageView fitHeight="66.0" fitWidth="77.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                                   <image>
+                                                      <Image url="@../res/computer_logo.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </center>
+                                          </BorderPane>
+                                       </children>
+                                    </GridPane>
+                                 </center>
+                              </BorderPane>
+                           </children>
+                        </GridPane>
+                     </center>
+                  </BorderPane>
+               </content>
+            </TitledPane>
+         </center>
+      </BorderPane>
+   </center>
+   <left>
+      <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Liste des machines" BorderPane.alignment="CENTER">
+         <content>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <ListView fx:id="conHosts" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
+               </center>
+               <bottom>
+                  <GridPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="39.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="161.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="onHostCount" text="Label" />
+                        <Label text="Machines connectée(s)" textFill="#098309" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="offHostCount" text="Label" GridPane.rowIndex="1" />
+                        <Label text="Machines hors ligne " textFill="#da1616" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </bottom>
+            </BorderPane>
+         </content>
+      </TitledPane>
+   </left>
+</BorderPane>
